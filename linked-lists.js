@@ -7,6 +7,8 @@
 function Node(value, next = null) {
     this.value = value;
     this.next = next;
+
+    return {value, next};
 };
 
 // Now we start with out linked list: we will create an empty list first,
@@ -35,13 +37,15 @@ function linkedList() {
             this.head = node;
         } else {
             temp = this.head;
-        };
-
-        while (temp.next) {
-            temp = temp.next;
+            while (temp.next) {
+                temp = temp.next;
+            };
         }
 
         temp.next = node;
+        this.size += 1;
+
+        return node, size;
     };
 
     const prepend = function (value) {
