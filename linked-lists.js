@@ -19,6 +19,10 @@ function Node(value, next = null) {
 // will store it in a temp variable. We will iterate through the list until there
 // is no more 'next' properties and then will append the new node.
 
+// If we want to append a value at the beginning of the list, first we need to 
+// create the node, then we define that the next node of the new one will be the head
+// node we had before, and reasign the head value to the new node.
+
 function linkedList() {
     this.head = null;
     let size = 0;
@@ -53,9 +57,11 @@ function linkedList() {
             node.next = this.head;
             this.head = node;
         }
+
+        size += 1;
     };
 
-    return {append};
+    return {append, prepend};
 };
 
 
@@ -64,5 +70,6 @@ function linkedList() {
 let list = new linkedList();
 list.append(40);
 list.append(50);
-list.append(56);
+console.log(list);
+list.prepend(56);
 console.log(list);
