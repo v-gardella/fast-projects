@@ -25,6 +25,7 @@ function Node(value, next = null) {
 
 function linkedList() {
     this.head = null;
+    this.tail = null;
     let size = 0;
 
     // Functions:
@@ -61,7 +62,11 @@ function linkedList() {
         size += 1;
     };
 
-    return {append, prepend};
+    const tellSize = function () {
+        return "The linked list has" + size + "nodes."
+    }
+
+    return {append, prepend, tellSize};
 };
 
 
@@ -73,3 +78,4 @@ list.append(50);
 console.log(list);
 list.prepend(56);
 console.log(list);
+list.tellSize();
