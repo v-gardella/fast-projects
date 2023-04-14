@@ -14,6 +14,11 @@ function Node(value, next = null) {
 // Now we start with out linked list: we will create an empty list first,
 // with a null head variable and a size of 0.
 
+// When we append a value we will create the node and look for the head pointer.
+// If there is no head we will asign the new node as it, and if there is one we
+// will store it in a temp variable. We will iterate through the list until there
+// is no more 'next' properties and then will append the new node.
+
 function linkedList() {
     this.head = null;
     let size = 0;
@@ -36,6 +41,18 @@ function linkedList() {
 
         size += 1;
 
+    };
+
+    
+    const prepend = function (value) {
+        let node = new Node(value);
+
+        if (!this.head) {
+            this.head = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
     };
 
     return {append};
