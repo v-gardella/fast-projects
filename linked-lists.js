@@ -23,6 +23,9 @@ function Node(value, next = null) {
 // create the node, then we define that the next node of the new one will be the head
 // node we had before, and reasign the head value to the new node.
 
+// Let's add a function to get a node using an index. Linked lists don't use indexes
+// to access their elements but we can simulate them.
+
 function linkedList() {
     this.head = null;
     this.tail = null;
@@ -63,11 +66,21 @@ function linkedList() {
         size += 1;
     };
 
-    const tellSize = function () {
-        return "The linked list has" + size + "nodes."
-    }
+    const at = function (index) {
+        let node = this.head;
 
-    return {append, prepend, tellSize};
+        for (let i = 1; i < index; i++) {
+            node = node.next;
+        }
+        
+        return node;
+    };
+
+    const tellSize = function () {
+        return `The linked list has ${size} nodes.`
+    };
+
+    return {append, prepend, tellSize, at};
 };
 
 
@@ -79,4 +92,5 @@ list.append(50);
 console.log(list);
 list.prepend(56);
 console.log(list);
-list.tellSize();
+console.log(list.tellSize())
+console.log(list.at(2));
