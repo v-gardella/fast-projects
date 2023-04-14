@@ -5,6 +5,7 @@ function linkedList() {
 
 };
 
-function Node(value = null, nextNode = null) {
-
+function Node(value, next = null) {
+    this.value = value;
+    this.next = next;
 };
