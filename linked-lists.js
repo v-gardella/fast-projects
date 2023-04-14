@@ -16,7 +16,7 @@ function Node(value, next = null) {
 
 function linkedList() {
     this.head = null;
-    this.size = 0;
+    let size = 0;
 
     // Functions:
 
@@ -24,18 +24,28 @@ function linkedList() {
         let temp = 0;
         let node = new Node(value);
 
-        if (this.head === null) {
+        if (!this.head) {
             this.head = node;
         } else {
             temp = this.head;
             while (temp.next) {
                 temp = temp.next;
-            };
+            }
+            temp.next = node;
         }
 
-        temp.next = node;
-        this.size += 1;
+        size += 1;
 
-        return node, size;
     };
+
+    return {append};
 };
+
+
+
+
+let list = new linkedList();
+list.append(40);
+list.append(50);
+list.append(56);
+console.log(list);
