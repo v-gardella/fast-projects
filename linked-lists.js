@@ -17,4 +17,25 @@ function Node(value, next = null) {
 function linkedList() {
     this.head = null;
     this.size = 0;
+
+    // Functions:
+
+    const append = function (value) {    
+        let temp = 0;
+        let node = new Node(value);
+
+        if (this.head === null) {
+            this.head = node;
+        } else {
+            temp = this.head;
+            while (temp.next) {
+                temp = temp.next;
+            };
+        }
+
+        temp.next = node;
+        this.size += 1;
+
+        return node, size;
+    };
 };
