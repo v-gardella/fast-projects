@@ -10,3 +10,11 @@ function Node(value, next = null) {
 
     return {value, next};
 };
+
+// Now we start with out linked list: we will create an empty list first,
+// with a null head variable and a size of 0.
+
+function linkedList() {
+    this.head = null;
+    this.size = 0;
+};
