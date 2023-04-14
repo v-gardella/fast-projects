@@ -43,6 +43,7 @@ function linkedList() {
             }
             temp.next = node;
         }
+        this.tail = node;
 
         size += 1;
 
