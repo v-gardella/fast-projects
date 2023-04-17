@@ -67,20 +67,32 @@ function linkedList() {
     };
 
     const at = function (index) {
-        let node = this.head;
+        let temp = this.head;
 
         for (let i = 1; i < index; i++) {
-            node = node.next;
+            temp = temp.next;
         }
         
-        return node;
+        return temp;
+    };
+
+    const pop = function () {
+        let temp = this.head;
+        let current = 0;
+        let last = 0;
+
+        while (temp.next.next) {
+            temp = temp.next;
+        }
+        this.tail = temp;
+        temp.next = null;
     };
 
     const tellSize = function () {
         return `The linked list has ${size} nodes.`
     };
 
-    return {append, prepend, tellSize, at};
+    return {append, prepend, tellSize, at, pop};
 };
 
 
@@ -89,8 +101,8 @@ function linkedList() {
 let list = new linkedList();
 list.append(40);
 list.append(50);
+list.append(53);
+//list.append(57);
 console.log(list);
-list.prepend(56);
+list.pop();
 console.log(list);
-console.log(list.tellSize())
-console.log(list.at(2));
