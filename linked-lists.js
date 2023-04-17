@@ -30,7 +30,8 @@ function Node(value, next = null) {
 // and asign it as the tail, and then replace the value of the last node with null.
 
 // The function contains will iterate the linked list looking for a value, returning
-// the corresponding true or false value.
+// the corresponding true or false value. The function fin, on the other side, works in 
+// a similar way but defining a counter to simulate an index and returns this value.
 
 
 function linkedList() {
@@ -125,12 +126,28 @@ function linkedList() {
     };
 
 
+    const find = function (value) {
+        let temp = this.head;
+        let index = 0;
+
+        while (temp) {
+            index++;
+            if (temp.value === value) return index;
+            else {
+                temp = temp.next;
+            }
+        }
+
+        return null;
+    };
+
+
     const tellSize = function () {
         return `The linked list has ${size} nodes.`
     };
-    
 
-    return {append, prepend, tellSize, at, pop, contains};
+
+    return {append, prepend, tellSize, at, pop, contains, find};
 };
 
 
@@ -141,5 +158,6 @@ list.append(40);
 list.append(50);
 list.append(53);
 list.append(57);
-console.log(list.contains(41));
+console.log(list.contains(50));
+console.log(list.find(54));
 console.log(list);
