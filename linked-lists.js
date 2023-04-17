@@ -29,6 +29,9 @@ function Node(value, next = null) {
 // Our function pop will recognize the third to last node, select the second to last
 // and asign it as the tail, and then replace the value of the last node with null.
 
+// The function contains will iterate the linked list looking for a value, returning
+// the corresponding true or false value.
+
 
 function linkedList() {
     this.head = null;
@@ -70,6 +73,7 @@ function linkedList() {
         size += 1;
     };
 
+
     const at = function (index) {
         let temp = this.head;
 
@@ -79,6 +83,7 @@ function linkedList() {
         
         return temp;
     };
+
 
     const pop = function () {
         let temp = this.head;
@@ -103,14 +108,29 @@ function linkedList() {
             this.tail = temp;
             temp.next = null;
         };
-        
     };
+
+
+    const contains = function (value) {
+        let temp = this.head;
+
+        while (temp) {
+            if (temp.value === value) return true;
+            else {
+                temp = temp.next;  
+            }
+        }
+
+        return false;
+    };
+
 
     const tellSize = function () {
         return `The linked list has ${size} nodes.`
     };
+    
 
-    return {append, prepend, tellSize, at, pop};
+    return {append, prepend, tellSize, at, pop, contains};
 };
 
 
@@ -120,7 +140,6 @@ let list = new linkedList();
 list.append(40);
 list.append(50);
 list.append(53);
-// list.append(57);
-console.log(list);
-list.pop();
+list.append(57);
+console.log(list.contains(41));
 console.log(list);
