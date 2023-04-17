@@ -26,6 +26,10 @@ function Node(value, next = null) {
 // Let's add a function to get a node using an index. Linked lists don't use indexes
 // to access their elements but we can simulate them.
 
+// Our function pop will recognize the third to last node, select the second to last
+// and asign it as the tail, and then replace the value of the last node with null.
+
+
 function linkedList() {
     this.head = null;
     this.tail = null;
@@ -78,14 +82,28 @@ function linkedList() {
 
     const pop = function () {
         let temp = this.head;
-        let current = 0;
-        let last = 0;
 
-        while (temp.next.next) {
-            temp = temp.next;
+        if (!this.head) {
+            return this.head;
         }
-        this.tail = temp;
-        temp.next = null;
+
+        if (!temp.next) {
+            temp = null;
+        }
+
+        if (!temp.next.next) {
+            this.tail = temp;
+            temp.next = null;
+        }
+
+        else {
+            while (temp.next.next) {
+                temp = temp.next;
+            }
+            this.tail = temp;
+            temp.next = null;
+        };
+        
     };
 
     const tellSize = function () {
@@ -102,7 +120,7 @@ let list = new linkedList();
 list.append(40);
 list.append(50);
 list.append(53);
-//list.append(57);
+// list.append(57);
 console.log(list);
 list.pop();
 console.log(list);
