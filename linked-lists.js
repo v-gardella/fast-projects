@@ -147,7 +147,24 @@ function linkedList() {
     };
 
 
-    return {append, prepend, tellSize, at, pop, contains, find};
+    const toString = function () {
+        let temp = this.head;
+        let list = '';
+
+        if (!this.head) return null;
+        else {
+            while (temp) {
+                list += `( ${temp.value} ) -> `
+                temp = temp.next
+            }
+            list += 'null';
+        }
+
+        return list;
+    };
+
+
+    return {append, prepend, tellSize, at, pop, contains, find, toString};
 };
 
 
@@ -155,9 +172,10 @@ function linkedList() {
 
 let list = new linkedList();
 list.append(40);
-list.append(50);
-list.append(53);
-list.append(57);
-console.log(list.contains(50));
-console.log(list.find(54));
+// list.append(50);
+// list.append(53);
+// list.append(57);
+// console.log(list.contains(50));
+// console.log(list.find(54));
+console.log(list.toString())
 console.log(list);
