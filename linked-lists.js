@@ -164,7 +164,27 @@ function linkedList() {
     };
 
 
-    return {append, prepend, tellSize, at, pop, contains, find, toString};
+    // Extra Credit
+
+    const insertAt = function (value, index) {
+        let temp = this.head;
+        let position = 1;
+
+        if (size < index) return console.log('ERROR: index not found.')
+
+        while (temp) {
+            position++;
+            if (position === index) {
+                newNode = new Node(value, temp.next)
+                temp.next = newNode;
+            }
+            else {
+                temp = temp.next;
+            }
+        };
+    };
+
+    return {append, prepend, tellSize, at, pop, contains, find, toString, insertAt};
 };
 
 
@@ -172,10 +192,13 @@ function linkedList() {
 
 let list = new linkedList();
 list.append(40);
-// list.append(50);
-// list.append(53);
-// list.append(57);
+list.append(50);
+list.append(53);
+list.append(57);
 // console.log(list.contains(50));
 // console.log(list.find(54));
 console.log(list.toString())
+list.insertAt(30, 2);
+console.log(list.toString());
+list.insertAt(30, 7);
 console.log(list);
