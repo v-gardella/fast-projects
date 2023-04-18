@@ -13,8 +13,22 @@ function Node(value) {
 // Then we create the tree factory function and the tree construction
 // function.
 
+// Fisrt we define the root by selecting the middle element in the array.
+// 
+
 function buildTree(array) {
-    
+    let sortedArray = mergeSort(array);
+
+    let middle = Math.floor(array.length / 2);
+    let newNode = new Node(array[middle]);
+
+    let subarrLeft = sortedArray.slice(0, middle);
+    let subarrRight = sortedArray.slice(middle+1, sortedArray.length);
+
+    newNode.left = buildTree(subarrLeft);
+    newNode.right = buildTree(subarrayRight);
+
+    return console.log(sortedArray, subarrLeft, subarrRight);
 }
 
 // Let's add a Merge Sort script to order the array.
@@ -46,4 +60,4 @@ function merge(left, right) {
 
 // Function Calls
 
-console.log(mergeSort([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]))
+console.log(buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 50]))
