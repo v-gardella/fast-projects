@@ -5,7 +5,7 @@
 // when the algorithm creates the tree, not before).
 
 function Node(value) {
-    this.root = value;
+    this.value = value;
     this.right = null;
     this.left = null;
 }
@@ -84,7 +84,7 @@ function merge(left, right) {
 
 // Function Calls
 
-//let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-let prueba = [1, 5, 8, 14, 20];
+let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+//et prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
 console.log(newTree)
