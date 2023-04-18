@@ -62,11 +62,15 @@ function Tree(array) {
             if (node.value === value) {
                 return node;
             }
-            if (node.value > value) {
+            else if (node.value > value) {
                 node = node.left;
             }
-            if (node.value < value) {
+            else if (node.value < value) {
                 node = node.right;
+            }
+            
+            if (node.value !== value && node.right === null && node.left === null) {
+                return 'ERROR: NODE NOT IN TREE'
             }
         }
         
@@ -112,4 +116,4 @@ let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
 console.log(newTree.root);
-console.log(newTree.find(324));
+console.log(newTree.find(323));
