@@ -17,7 +17,14 @@ function Node(value) {
 // 
 
 function buildTree(array) {
-    let sortedArray = mergeSort(array);
+    let newArray = [];
+    array.forEach((item) => {
+        if (!newArray.includes(item)) {
+            newArray.push(item);
+        }
+    })
+
+    let sortedArray = mergeSort(newArray);
 
     let middle = Math.floor(array.length / 2);
     let newNode = new Node(array[middle]);
@@ -26,9 +33,9 @@ function buildTree(array) {
     let subarrRight = sortedArray.slice(middle+1, sortedArray.length);
 
     newNode.left = buildTree(subarrLeft);
-    newNode.right = buildTree(subarrayRight);
+    newNode.right = buildTree(subarrRight);
 
-    return console.log(sortedArray, subarrLeft, subarrRight);
+    return console.log(sortedArray);
 }
 
 // Let's add a Merge Sort script to order the array.
