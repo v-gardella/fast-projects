@@ -207,15 +207,20 @@ function linkedList() {
 
 
 
+// Function call
 
 let list = new linkedList();
+
 list.append(40);
 list.append(50);
 list.append(53);
 list.append(57);
-// console.log(list.contains(50));
-// console.log(list.find(54));
+
+console.log(list.contains(50));
+console.log(list.find(54));
+
 list.insertAt(30, 2);
 console.log(list.toString());
+
 list.removeAt(2);
 console.log(list.toString());
