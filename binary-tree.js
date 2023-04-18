@@ -5,7 +5,7 @@
 // when the algorithm creates the tree, not before).
 
 function Node(value) {
-    this.value = value;
+    this.root = value;
     this.right = null;
     this.left = null;
 }
@@ -14,11 +14,6 @@ function Node(value) {
 // function.
 
 function Tree(array) {
-    this.root = newNode;
-}
-
-
-function buildTree(array, start, end) {
     let newArray = [];
     array.forEach((item) => {
         if (!newArray.includes(item)) {
@@ -27,19 +22,29 @@ function buildTree(array, start, end) {
     })
 
     let sortedArray = mergeSort(newArray);
+    
+    this.root = buildTree(sortedArray, 0, sortedArray.length);
 
-    if (start > end) {
-        return null;
-    };
+    // Functions
 
-    let middle = Math.floor((start + end) / 2);
-    let newNode = new Node(array[middle]);
+    function buildTree(array, start, end) {
+    
+        if (start > end) {
+            return null;
+        };
+        
+        let middle = Math.floor((start + end) / 2);
+        let newNode = new Node(sortedArray[middle]);
+    
+        newNode.left = buildTree(sortedArray, start, middle - 1);
+        newNode.right = buildTree(sortedArray, middle + 1, end);
+    
+        return newNode;
+    }
 
-    newNode.left = buildTree(sortedArray, start, middle - 1);
-    newNode.right = buildTree(sortedArray, middle + 1, end);
-
-    return newNode;
+    return this.root;
 }
+
 
 // Let's add a Merge Sort script to order the array.
 
@@ -72,4 +77,5 @@ function merge(left, right) {
 
 
 let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 50];
-console.log(buildTree(prueba, 0, prueba.length));
+let newTree = new Tree(prueba);
+console.log(newTree)
