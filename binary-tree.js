@@ -13,8 +13,10 @@ function Node(value) {
 // Then we create the tree factory function and the tree construction
 // function.
 
-// First we define the root by selecting the middle element in the array.
-// 
+function Tree(array) {
+    this.root = newNode;
+}
+
 
 function buildTree(array, start, end) {
     let newArray = [];
@@ -36,7 +38,7 @@ function buildTree(array, start, end) {
     newNode.left = buildTree(sortedArray, start, middle - 1);
     newNode.right = buildTree(sortedArray, middle + 1, end);
 
-    return console.log(newNode);
+    return newNode;
 }
 
 // Let's add a Merge Sort script to order the array.
