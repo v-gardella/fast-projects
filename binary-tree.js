@@ -58,15 +58,18 @@ function Tree(array) {
             return this.root;
         }
 
-        if (node.value > value) {
-            node = node.left;
+        while (node) {
+            if (node.value === value) {
+                return node;
+            }
+            if (node.value > value) {
+                node = node.left;
+            }
+            if (node.value < value) {
+                node = node.right;
+            }
         }
-        if (node.value < value) {
-            node = node.right;
-        }
-        if (node.value === value) {
-            return node;
-        }
+        
     }
 
     return {
@@ -108,5 +111,5 @@ function merge(left, right) {
 let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
-console.log(newTree.root.right.left.right);
-console.log(newTree.find(23));
+console.log(newTree.root);
+console.log(newTree.find(324));
