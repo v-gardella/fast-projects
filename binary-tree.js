@@ -28,13 +28,22 @@ function Tree(array) {
     // Functions
 
     function buildTree(array, start, end) {
-    
+        let newNode = null;
+
         if (start > end) {
             return null;
         };
-        
+
+        if (array.length === 0) {
+            return null;
+        }
+
         let middle = Math.floor((start + end) / 2);
-        let newNode = new Node(sortedArray[middle]);
+        newNode = new Node(sortedArray[middle]);
+
+        if (array[middle] === undefined) {
+            return null;
+        }
     
         newNode.left = buildTree(sortedArray, start, middle - 1);
         newNode.right = buildTree(sortedArray, middle + 1, end);
@@ -75,7 +84,7 @@ function merge(left, right) {
 
 // Function Calls
 
-let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 50];
+//let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
 console.log(newTree)
-console.log(newTree.left);
