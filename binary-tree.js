@@ -107,6 +107,7 @@ function Tree(array) {
     const deleteNode = function (value) {
         let node = this.root;
         let parent = null;
+        let temp = null;
 
         if (this.root === null) {
             return this.root;
@@ -136,6 +137,46 @@ function Tree(array) {
         }
 
         [node, parent] = getNodes(value);
+
+        if (node !== null) {
+
+            // Node is a leaf:
+            if (!node.right && !node.left) {
+                if (parent.right === node) {
+                    parent.right = null;
+                }
+                else if (parent.left === node) {
+                    parent.left = null;
+                }
+            }
+
+            // Node has one child:
+            if (node.left === null && node.right !== null) {
+                if (parent.right === node) {
+                    parent.right = node.right; 
+                }
+                else if (parent.left === node) {
+                    parent.left = node.right;
+                }
+            }
+            else if (node.left !== null && node.right === null) {
+                if (parent.right === node) {
+                    parent.right = node.left;
+                }
+                else if (parent.left === node) {
+                    parent.left = node.left;
+                }
+            }
+
+            // Node has two children:
+
+        }
+
+        else {
+            return 'is not';
+        }
+
+        return parent;
     }
 
     return {
@@ -180,5 +221,7 @@ let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
 
-console.log(newTree.deleteNode(23));
+console.log(newTree.find(67));
+console.log(newTree.deleteNode(6345));
 //console.log(newTree.root.right);
+//console.log(newTree.find(67));
