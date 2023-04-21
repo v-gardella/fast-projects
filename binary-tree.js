@@ -75,7 +75,7 @@ function Tree(array) {
         }
     };
 
-    const insert = function (value) {
+    const insertNode = function (value) {
         let node = this.root;
         let temp = null;
         let newNode = new Node(value);
@@ -106,7 +106,7 @@ function Tree(array) {
     return {
         root: this.root,
         find: find,
-        insert: insert
+        insertNode: insertNode
     };
 }
 
@@ -145,5 +145,5 @@ let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 let newTree = new Tree(prueba);
 console.log(newTree.root);
 // console.log(newTree.find(6345));
-console.log(newTree.insert(10));
+console.log(newTree.insertNode(10));
 console.log(newTree.find(9))
