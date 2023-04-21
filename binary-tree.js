@@ -111,6 +111,31 @@ function Tree(array) {
         if (this.root === null) {
             return this.root;
         }
+
+        // Search for the node and parent:
+        function getNodes(value) {
+            while (node) {
+                if (node.value === value) {
+                    return [node, parent];
+                }
+                else if (node.value > value) {
+                    parent = node;
+                    node = node.left;
+                }
+                else if (node.value < value) {
+                    parent = node;
+                    node = node.right;
+                }
+                
+                if (node.value !== value && node.right === null && node.left === null) {
+                    console.log('ERROR: NODE NOT IN TREE')
+                    return null;
+                }
+                
+            }
+        }
+
+        [node, parent] = getNodes(value);
     }
 
     return {
