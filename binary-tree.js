@@ -108,6 +108,7 @@ function Tree(array) {
         let node = this.root;
         let parent = null;
         let temp = null;
+        let tempParent = null;
 
         if (this.root === null) {
             return this.root;
@@ -129,8 +130,7 @@ function Tree(array) {
                 }
                 
                 if (node.value !== value && node.right === null && node.left === null) {
-                    console.log('ERROR: NODE NOT IN TREE')
-                    return null;
+                    return [null, null];
                 }
                 
             }
@@ -169,14 +169,33 @@ function Tree(array) {
             }
 
             // Node has two children:
+            if (node.right && node.left) {
+                temp = node;
+                node = node.right;
 
+                while (node.left) {
+                    tempParent = node;
+                    node = node.left;
+                }
+
+                temp.value = node.value;
+
+                if (node.right) {
+                    tempParent.left = node.right;
+                }
+                else {
+                    tempParent.left = null;
+                }
+            }
         }
 
         else {
-            return 'is not';
+            return 'ERROR: NODE NOT IN TREE.';
         }
 
-        return parent;
+        if (parent !== null) return parent;
+        else return this.root;
+
     }
 
     return {
@@ -220,8 +239,8 @@ function merge(left, right) {
 let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
+///console.log(newTree.root);
+//console.log(newTree.find(20));
+console.log(newTree.deleteNode(20));
 
-console.log(newTree.find(67));
-console.log(newTree.deleteNode(6345));
-//console.log(newTree.root.right);
 //console.log(newTree.find(67));
