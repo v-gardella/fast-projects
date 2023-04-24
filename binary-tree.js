@@ -197,11 +197,40 @@ function Tree(array) {
 
     }
 
+    const levelOrder = function () {
+        let queue = [this.root];
+        let values = [];
+        let nodes = [];
+        
+        while (queue.length > 0) {
+            let node = queue.pop()
+
+            values.push(node.value);
+            nodes.push(node);
+
+            if (node.left) {
+                queue.unshift(node.left)
+            }
+            if (node.right) {
+                queue.unshift(node.right)
+            }
+
+        }
+
+
+        return {
+            values: values,
+            nodes: nodes
+        }
+        
+    }
+
     return {
         root: this.root,
         find: find,
         insertNode: insertNode,
-        deleteNode: deleteNode
+        deleteNode: deleteNode,
+        levelOrder: levelOrder
     };
 }
 
@@ -238,8 +267,9 @@ function merge(left, right) {
 let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
-///console.log(newTree.root);
+//console.log(newTree.root);
 //console.log(newTree.find(20));
-console.log(newTree.deleteNode(20));
+//console.log(newTree.deleteNode(20));
 
 //console.log(newTree.find(67));
+console.log(newTree.levelOrder())
