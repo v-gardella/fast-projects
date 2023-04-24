@@ -70,8 +70,7 @@ function Tree(array) {
             }
             
             if (node.value !== value && node.right === null && node.left === null) {
-                console.log('ERROR: NODE NOT IN TREE')
-                return null;
+                return 'ERROR: NODE NOT IN TREE';
             }
         }
     };
