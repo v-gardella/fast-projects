@@ -225,12 +225,35 @@ function Tree(array) {
         
     }
 
+    const inorder = function () {
+        let node = this.root;
+        let queue = [node];
+        let values = [];
+        let nodes = [];
+
+        while (queue.length > 0) {
+            while (node.left !== null) {
+                node = node.left;
+            }
+
+            values.push(node);
+
+            if (node.right) {
+                node = node.right;
+            }  
+        }
+
+        return values;
+
+    }
+
     return {
         root: this.root,
         find: find,
         insertNode: insertNode,
         deleteNode: deleteNode,
-        levelOrder: levelOrder
+        levelOrder: levelOrder,
+        inorder: inorder
     };
 }
 
@@ -267,9 +290,9 @@ function merge(left, right) {
 let prueba = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 //let prueba = [1, 5, 8, 14, 20];
 let newTree = new Tree(prueba);
-//console.log(newTree.root);
-//console.log(newTree.find(20));
+console.log(newTree.root);
+//console.log(newTree.find(1));
 //console.log(newTree.deleteNode(20));
 
 //console.log(newTree.find(67));
-console.log(newTree.levelOrder())
+console.log(newTree.inorder())
