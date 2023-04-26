@@ -3,6 +3,7 @@ const caesarCipher = require('./caesar-cipher');
 test('The string gets shifted', () => {
     expect(caesarCipher('abcde', 1)).toBe('bcdef');
     expect(caesarCipher('uvwxyz', 3)).toBe('xyzabc');
+    expect(caesarCipher('uvwxyz', -3)).toBe('rstuvw');
 })
 
 test('Shift respects spaces', () => {
@@ -15,6 +16,6 @@ test('Shift respects special characters', () => {
     expect(caesarCipher('let us never split <3', 4)).toBe('pix yw riziv wtpmx <3');
 })
 
-test.skip('Shift respects letter case', () => {
-    expect(caesarCipher('Defend The East Wall of the Castle', 3)).toBe('Efgfoe Uif Fbtu Xbmm pg uif Dbtumf');
+test('Shift respects letter case', () => {
+    expect(caesarCipher('Have You Ever Changed your Path', 3)).toBe('Kdyh Brx Hyhu Fkdqjhg brxu Sdwk');
 })
