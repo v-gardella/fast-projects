@@ -39,6 +39,4 @@ function caesarCipher(string, shift) {
     return message;
 }
 
-console.log(caesarCipher('Hello. World', 3));
-
 module.exports = caesarCipher;
