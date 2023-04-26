@@ -17,3 +17,7 @@ test('Reversed string respects upper, lower and propercase', () => {
     expect(reverseString('This One Is In Propercase')).toBe('esacreporP nI sI enO sihT');
     expect(reverseString('THIS ONE IS IN UPPERCASE')).toBe('ESACREPPU NI SI ENO SIHT');
 })
+
+test('Function respect numbers', () => {
+    expect(reverseString('03-03-456')).toBe('654-30-30');
+})
