@@ -9,6 +9,4 @@ function reverseString(value) {
     return reverseArray.join('')
 }
 
-reverseString('watermelon')
-
 module.exports = reverseString;
