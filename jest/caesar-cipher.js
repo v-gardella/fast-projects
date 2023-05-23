@@ -1,6 +1,6 @@
 function caesarCipher(string, shift) {
     const alpha = 'abcdefghijklmnopqrstuvwxyz'
-    const upperAlpha = 'ABCDEFGHIJKLMNOPQRSTWXYZ';
+    const upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let array = string.split('');
     let message = ''
 
